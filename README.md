@@ -1,2 +1,3 @@
 # mars-recruitment
 task#1
+Engaging with tasks that involve programming languages like C++ and C, along with basic Linux commands, gave me a highly enriching experience. These languages are foundational to understanding computer science principles and offer a close interaction with system hardware, memory management, and performance optimization. Learning C++ and C provides a strong base for object-oriented programming and low-level computation, which is essential for developing efficient. Meanwhile, mastering basic Linux commands is crucial for  automating tasks, and managing system resources. For me, it enhanced problem-solving abilities and opens up a wide range of possibilities for creating robust and high-performing applications.

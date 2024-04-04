@@ -1,0 +1,177 @@
+2. MEDIUM :-
+C++
+
+1. #include <iostream>
+
+using namespace std;
+
+// Define a custom data type
+struct club {
+  string name;
+  int roll_no;
+};
+//lambda function
+auto printstatement = [](const club& mem) {
+  return to_string(mem.roll_no) + mem.name;
+};
+//a function named printFunction is created
+void printFunction(const club& mem) {
+    cout << to_string(mem.roll_no)+mem.name << endl;
+    cout << "THIS IS DISPLAYED BY CALLING FUNCTION" << endl;
+  }
+int main() 
+{
+ // a variable that can store an object   
+  auto variable = club{" I want to get into a techincal club ", 1079};
+ // Use the lambda function to print the mars object 
+  cout << printstatement(variable) << endl;
+  cout << "THIS IS DISPLYED WITHOUT CALLING THE FUNCTION" << endl;
+// Pass the mars object to a function named printfunction  
+ printFunction(variable);
+  return 0;
+}
+
+
+2.#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Hierarchy {
+public:
+  string name;
+  int power;
+  vector<Hierarchy*> subordinates;
+
+  Hierarchy(string name, int power) {
+    this->name = name;
+    this->power = power;
+  }
+
+  void addSubordinate(Hierarchy* subordinate) {
+    subordinates.push_back(subordinate);
+  }
+
+  void communicate(Hierarchy* person) {
+    cout << this->name << " conveys to " << person->name << endl;
+  }
+};
+
+int main() {
+  Hierarchy* LEAD = new Hierarchy("LEAD", 100);
+  Hierarchy* CORE= new Hierarchy("CORE", 90);
+  Hierarchy* JOINT_CORE = new Hierarchy("JOINT_CORE", 70);
+  Hierarchy* TEAMMEM_1 = new Hierarchy("TEAMMEM_1", 60);
+  Hierarchy* TEAMMEM_2 = new Hierarchy("TEAMMEM_2", 60);
+  Hierarchy* TEAMMEM_3 = new Hierarchy("TEAMMEM_3", 60);
+  Hierarchy* TEAMMEM_4 = new Hierarchy("TEAMMEM_4", 60);
+
+  LEAD->addSubordinate(CORE);
+  CORE->addSubordinate(JOINT_CORE);
+  JOINT_CORE->addSubordinate(TEAMMEM_1);
+  JOINT_CORE->addSubordinate(TEAMMEM_2);
+  JOINT_CORE->addSubordinate(TEAMMEM_3);
+  JOINT_CORE->addSubordinate(TEAMMEM_4);
+
+  // COMMUNICATION CODE
+  LEAD->communicate(CORE);
+  CORE->communicate(JOINT_CORE);
+  JOINT_CORE->communicate(TEAMMEM_1);
+  JOINT_CORE->communicate(TEAMMEM_2);
+  JOINT_CORE->communicate(TEAMMEM_3);
+  JOINT_CORE->communicate(TEAMMEM_4);
+  return 0;
+}
+
+~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~----------->
+
+3. STRONG :-
+ C 
+
+#include <stdio.h>
+
+int countDistinctPrimeFactors(int n) {
+    int count = 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            count++;
+            while (n % i == 0) {
+                n /= i;
+            }
+        }
+    }
+    if (n > 1) {
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int consecutiveCount = 0;
+    int currentNumber = 1;
+    
+    while (consecutiveCount < 4) {
+        if (countDistinctPrimeFactors(currentNumber) == 4) {
+            consecutiveCount++;
+            if (consecutiveCount == 4) {
+                printf("The four consecutive integers with four distinct prime factors each are: %d, %d, %d, %d\n", currentNumber - 3, currentNumber - 2, currentNumber - 1, currentNumber);
+            }
+        } else {
+            consecutiveCount = 0;
+        }
+        currentNumber++;
+    }
+    
+    return 0;
+}
+
+
+
+PYTHON
+
+
+import cv2
+
+# Load the image
+image = cv2.imread("Lena.png")
+
+# Define the threshold
+threshold = (160, 160, 160)
+
+# Initialize counters for typeA and typeB pixels
+typeA_count = 0
+typeB_count = 0
+
+# Convert image to grayscale
+grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+enumerate()
+# Iterate through each pixel
+for row in image:
+    for pixel in row:
+        # Check if the pixel is typeA or typeB
+        if all(color > threshold[i] for i, color in enumerate(pixel)):
+            typeA_count += 1
+        else:
+            typeB_count += 1
+
+# Calculate percentage of typeA and typeB pixels
+total_pixels = image.shape[0] * image.shape[1]
+percentage_typeA = (typeA_count / total_pixels) * 100
+percentage_typeB = (typeB_count / total_pixels) * 100
+
+print("Percentage of typeA pixels:", percentage_typeA)
+print("Percentage of typeB pixels:", percentage_typeB)
+
+# Define brightness level
+brightness_level = 150 
+
+# Create a mask for pixels above brightness level
+ret, mask = cv2.threshold(grayscale_image, brightness_level, 255, cv2.THRESH_BINARY)
+
+# Invert the mask
+mask = cv2.bitwise_not(mask)
+
+# Display the black and white image
+cv2.imshow("Black and White Image", mask)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
